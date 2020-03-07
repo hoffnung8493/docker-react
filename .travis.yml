@@ -7,3 +7,14 @@ before_install:
 
 script:
   - docker run -e CI=true sihoon/docker-react npm run test -- --coverage
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: 'ap-northeast-2'
+  app: 'docker-react'
+  env: 'DockerReact-env'
+  bucket_name: 'elasticbeanstalk-ap-northeast-2-904358639036'
+  bucket_path: 'docker-react'
+  on:
+    branch: master
